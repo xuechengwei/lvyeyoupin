@@ -116,7 +116,11 @@
     margin-right: 10px;
     margin-left: 0;
 }
-
+.btn-group-justified>li {
+    display: table-cell;
+    float: none;
+    text-align: center;
+}
 @media (min-width: 1200px) {
     .step-bar {
         margin: 30px 0;

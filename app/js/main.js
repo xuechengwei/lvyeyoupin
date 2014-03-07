@@ -1,5 +1,5 @@
 require.config({
-    // baseUrl: "libs/",
+    baseUrl: "js",
     paths: {
         angular: 'libs/angular/angular',
         jquery: 'libs/jquery/jquery',
@@ -9,6 +9,9 @@ require.config({
         angularResource: 'libs/angular-resource/angular-resource'
     },
     shim: {
+        'jquery': {
+            exports: 'jquery'
+        },
         'twitter': {
             deps: ['jquery']
         },
