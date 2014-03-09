@@ -5,8 +5,8 @@ require.config({
         jquery: 'libs/jquery/jquery',
         domReady: 'libs/domReady',
         twitter: 'libs/bootstrap/bootstrap',
-        bootstrapWizard: 'libs/bootstrap-wizard/jquery.bootstrap.wizard',
-        angularResource: 'libs/angular-resource/angular-resource'
+        ngResource: 'libs/angular-resource/angular-resource',
+        ngRoute: 'libs/angular-route/angular-route'
     },
     shim: {
         'jquery': {
@@ -23,25 +23,15 @@ require.config({
             deps: ['jquery', 'twitter'],
             exports: 'angular'
         },
-        'angularResource': {
+        'ngResource': {
+            deps: ['angular']
+        },
+        'ngRoute': {
             deps: ['angular']
         }
 
-    }
+    },
+    deps: [
+        './bootstrap'
+    ]
 })
-
-require([
-    'jquery',
-    'angular',
-    'domReady',
-    'twitter',
-    'bootstrapWizard',
-    'app',
-    'bootstrap',
-    'controllers/priceRecordCtrl',
-    'controllers/wizardCtrl'
-    ], function (angular, app, domReady) {
-        'use strict';
-        console.log('bootstraped')
-    }
-)
