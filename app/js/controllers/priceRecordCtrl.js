@@ -1,4 +1,4 @@
-define(['controllers/controllers'], function (controllers) {
+define(['./controllers'], function (controllers) {
     controllers.controller('PriceRecordCtrl', ['$scope', function ($scope) {
         $scope.prices = [
             {

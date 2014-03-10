@@ -1,4 +1,4 @@
-define(["directives/directives"], function (directives) {
+define(["./directives"], function (directives) {
     directives.directive("lyWizard", function () {
         return {
             restrict: "A",

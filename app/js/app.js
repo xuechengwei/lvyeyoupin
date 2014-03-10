@@ -2,6 +2,7 @@ define([
     'angular',
     'ngRoute',
     'controllers/controllers',
+    'controllers/priceRecordCtrl',
     'services/services',
     'filters/filters',
     'directives/directives'

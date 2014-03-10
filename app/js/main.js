@@ -15,10 +15,6 @@ require.config({
         'twitter': {
             deps: ['jquery']
         },
-        'bootstrapWizard': {
-            deps: ['jquery', 'twitter'],
-            exports: 'wizard'
-        },
         'angular': {
             deps: ['jquery', 'twitter'],
             exports: 'angular'

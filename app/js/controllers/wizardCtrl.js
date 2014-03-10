@@ -1,4 +1,4 @@
-define(["controllers/controllers"], function (controllers) {
+define(["./controllers"], function (controllers) {
     controllers.controller("WizardCtrl", ["$scope","$q", "$timeout", function($scope, $q, $timeout){
         $scope.forms = {};
 
