@@ -25,15 +25,22 @@
                 <textarea name="" id="" class="form-control" rows="10"></textarea>
             </div>
         </div>
-        <div class="form-group clearfix">
+        <div class="form-group clearfix"  ng-controller="ratyCtrl">
             <div class="col-lg-2 col-md-2 clearfix row-head">
                 <label for="" class="must-fill">线路指数:</label>
             </div>
             <div class="col-lg-10 col-md-10">
                 <span class="field-tips">设置不同的指数级别，让您的活动更具特色</span>
             </div>
-            <div class="col-lg-offset-2 col-lg-10">
-                
+            <div class="col-lg-12">
+                <div ng-repeat="item in items" class="row">
+                    <div class="col-lg-2">
+                        {{ item.indexName }}:
+                    </div>
+                    <div class="col-lg-8">
+                        <raty score="1" number="5"></raty>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -291,7 +298,7 @@
                             <th>操作</th>
                         </tr>
                     </thead>
-                    <tbody ng-controller="PriceRecordCtrl">
+                    <tbody ng-controller="priceRecordCtrl">
                         <tr ng-repeat="price in prices" ng-class="{active: $index % 2 == 0}">
                             <td>{{ $index + 1 }}</td>
                             <td>{{ price.startDate }}</td>

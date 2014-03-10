@@ -1,5 +1,5 @@
 define(['./controllers'], function (controllers) {
-    controllers.controller('PriceRecordCtrl', ['$scope', function ($scope) {
+    controllers.controller('priceRecordCtrl', ['$scope', function ($scope) {
         $scope.prices = [
             {
                 startDate: '2014-5-1',

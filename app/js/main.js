@@ -6,11 +6,16 @@ require.config({
         domReady: 'libs/domReady',
         twitter: 'libs/bootstrap/bootstrap',
         ngResource: 'libs/angular-resource/angular-resource',
-        ngRoute: 'libs/angular-route/angular-route'
+        ngRoute: 'libs/angular-route/angular-route',
+        raty: 'libs/jquery.raty.min'
     },
     shim: {
         'jquery': {
             exports: 'jquery'
+        },
+        'raty': {
+            deps: ['jquery'],
+            exports: 'raty'
         },
         'twitter': {
             deps: ['jquery']

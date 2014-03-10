@@ -3,7 +3,6 @@ define(['app'], function (app) {
         '$routeProvider', function ($routeProvider) {
             $routeProvider.when('/', {
                 templateUrl: '../views/baseinfo.html',
-                controller: 'priceRecordCtrl'
             }).when('/step2', {
                 templateUrl: '../views/schedule.html',
             }).when('/step3', {
