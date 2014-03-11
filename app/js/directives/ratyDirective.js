@@ -2,7 +2,7 @@
 * @Author: xuechengwei
 * @Date:   2014-03-10 14:32:36
 * @Last Modified by:   xuechengwei
-* @Last Modified time: 2014-03-10 16:53:27
+* @Last Modified time: 2014-03-10 17:53:29
 */
 
 define(['./directives', 'jquery', 'raty'], function(directives, jquery) {
@@ -17,6 +17,7 @@ define(['./directives', 'jquery', 'raty'], function(directives, jquery) {
             // complie: function (scope, elem, ) {
             //     // body...
             // }
+            scope: true,
             link: function (scope, elem, attrs) {
                 console.log(attrs.targetid)
                 jquery(elem).raty({

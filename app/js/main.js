@@ -7,7 +7,8 @@ require.config({
         twitter: 'libs/bootstrap/bootstrap',
         ngResource: 'libs/angular-resource/angular-resource',
         ngRoute: 'libs/angular-route/angular-route',
-        raty: 'libs/jquery.raty.min'
+        raty: 'libs/jquery.raty.min',
+        ngBootstrapUi: 'libs/angular-bootstrap/ui-bootstrap-tpls.min'
     },
     shim: {
         'jquery': {
@@ -23,6 +24,9 @@ require.config({
         'angular': {
             deps: ['jquery', 'twitter'],
             exports: 'angular'
+        },
+        'ngBootstrapUi': {
+            deps: ['angular']
         },
         'ngResource': {
             deps: ['angular']

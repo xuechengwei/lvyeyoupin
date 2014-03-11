@@ -1,0 +1,25 @@
+<div class="table-responsive" ng-controller="draftsCtrl">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>操作</th>
+                <th>活动标题</th>
+                <th>发布时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="draft in drafts">
+                <td>
+                    <button type="button" class="btn btn-default">选用</button>
+                    <button type="button" class="btn btn-default" ng-click="remove($index)" >删除</button>
+                </td>
+                <td>
+                    {{ draft.title }}
+                </td>
+                <td>
+                    {{ draft.createAt | date:'yyyy-MM-dd HH:mm:ss' }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

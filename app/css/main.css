@@ -196,6 +196,12 @@
 .footer-btns {
     margin: 50px 0;
 }
+.has-error .field-tips {
+    display: none;
+}
+.error-tips {
+    color: #a94442;
+}
 
 @media (min-width: 1200px) {
     .main-container {
@@ -226,7 +232,7 @@
     .row-head label {
         line-height: 34px;
     }
-    .field-tips {
+    .field-tips, .error-tips {
         line-height: 34px;
     }
     .ml15 {

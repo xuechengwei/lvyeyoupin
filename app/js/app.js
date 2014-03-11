@@ -5,16 +5,19 @@ define([
     'controllers/priceRecordCtrl',
     'controllers/ratyCtrl',
     'controllers/mainCtrl',
+    'controllers/draftsCtrl',
     'services/services',
     'filters/filters',
     'directives/directives',
-    'directives/ratyDirective'
+    'directives/ratyDirective',
+    'ngBootstrapUi'
 ], function (angular) {
         return angular.module('lvyeApp', [
             'controllers',
             'services',
             'filters',
             'directives',
-            'ngRoute'
+            'ngRoute',
+            'ui.bootstrap'
         ]);
 })
