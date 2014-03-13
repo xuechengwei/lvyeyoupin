@@ -8,7 +8,8 @@ require.config({
         ngResource: 'libs/angular-resource/angular-resource',
         ngRoute: 'libs/angular-route/angular-route',
         raty: 'libs/jquery.raty.min',
-        ngBootstrapUi: 'libs/angular-bootstrap/ui-bootstrap-tpls.min'
+        ngBootstrapUi: 'libs/angular-bootstrap/ui-bootstrap-tpls.min',
+        yui: 'libs/yui-min'
     },
     shim: {
         'jquery': {
@@ -33,8 +34,10 @@ require.config({
         },
         'ngRoute': {
             deps: ['angular']
+        },
+        'yui': {
+            exports: 'yui'
         }
-
     },
     deps: [
         './bootstrap'

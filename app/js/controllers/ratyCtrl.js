@@ -2,11 +2,11 @@
 * @Author: xuechengwei
 * @Date:   2014-03-10 15:04:38
 * @Last Modified by:   xuechengwei
-* @Last Modified time: 2014-03-10 17:59:06
+* @Last Modified time: 2014-03-11 17:15:19
 */
 
 define(['./controllers'], function(controllers) {
-    controllers.controller('ratyCtrl', ['$scope', function($scope){
+    controllers.controller('RatyCtrl', ['$scope', function($scope){
         $scope.myRate = 0;
 
          $scope.submit = function() {
@@ -28,7 +28,7 @@ define(['./controllers'], function(controllers) {
            $scope.percent = (100 * $scope.rate) / $scope.max;
           };
     }])
-    controllers.controller('ratyCtrl1', ['$scope', function($scope){
+    controllers.controller('RatyCtrl1', ['$scope', function($scope){
         $scope.myRate = 0;
 
          $scope.submit = function() {
@@ -50,7 +50,7 @@ define(['./controllers'], function(controllers) {
            $scope.percent = (100 * $scope.rate) / $scope.max;
           };
     }])
-    controllers.controller('ratyCtrl2', ['$scope', function($scope){
+    controllers.controller('RatyCtrl2', ['$scope', function($scope){
         $scope.myRate = 0;
 
          $scope.submit = function() {
@@ -72,7 +72,7 @@ define(['./controllers'], function(controllers) {
            $scope.percent = (100 * $scope.rate) / $scope.max;
           };
     }])
-    controllers.controller('ratyCtrl3', ['$scope', function($scope){
+    controllers.controller('RatyCtrl3', ['$scope', function($scope){
         $scope.myRate = 0;
 
          $scope.submit = function() {

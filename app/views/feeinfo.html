@@ -1,38 +1,56 @@
 <!-- third form begin -->
-<form action="" name="thirdForm" class="tab-pane" ly-submit ly-step novalidate>
+<form action="" name="thirdForm" ng-submit="" novalidate>
     <div class="row">
-        <div class="col-lg-12">
-            <label for="" class="must-fill">费用说明:</label>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="">费用包含:</label>
-                        <textarea name="include" rows="10" class="form-control"></textarea>
+        <div class="form-group clearfix">
+            <div class="col-lg-2 row-head">
+                <label for="" class="must-fill">费用说明:</label>
+            </div>
+            <div class="col-lg-10">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group clearfix">
+                            <label class="lh34">费用包含:</label>
+                            <textarea name="include" rows="10" class="form-control" ng-model="draft.include"></textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="">费用不包含:</label>
-                        <textarea name="exclude" rows="10" class="form-control"></textarea>
+                    <div class="col-lg-6">
+                        <div class="form-group clearfix">
+                            <label class="lh34">费用不包含:</label>
+                            <textarea name="exclude" rows="10" class="form-control"></textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <label for="">支付与退款说明:</label>
-                        <textarea class="form-control" name="pay_instruction" id="" rows="10"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label class="must-fill" for="">预订须知:</label>
-                        <span class="field-tips">建议包含: 预订限制，出行警示及说明，安全指南等信息</span>
-                        <textarea class="form-control" name="tips" id="" rows="10"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="">签证信息:</label>
-                        <textarea class="form-control" name="visa_info" id="" rows="10"></textarea>
+                    <div class="col-lg-12">
+                        <div class="form-group clearfix">
+                            <label for="">支付与退款说明:</label>
+                            <textarea class="form-control" name="pay_instruction" id="" rows="10"></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="form-group clearfix">
+            <div class="col-lg-2 row-head">
+                <label class="must-fill" for="">预订须知:</label>
+            </div>
+            <div class="col-lg-10">
+                <span class="field-tips">建议包含: 预订限制，出行警示及说明，安全指南等信息</span>
+            </div>
+            <div class="col-lg-10 col-lg-offset-2">
+                <textarea class="form-control" name="tips" id="" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="form-group clearfix">
+            <div class="col-lg-2 row-head">
+                <label for="">签证信息:</label>
+            </div>
+            <div class="col-lg-10 visa-wrap">
+                <textarea class="form-control" name="visa_info" id="" rows="10"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="form-group clearfix text-center footer-btns">
+        <button type="button" class="btn btn-primary">下一步</button>
+        <button type="button" class="btn btn-default col-lg-offset-1">保存草稿</button>
     </div>
 </form>
 <!-- third form end -->

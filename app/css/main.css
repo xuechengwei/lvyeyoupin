@@ -202,6 +202,22 @@
 .error-tips {
     color: #a94442;
 }
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: none;
+}
+.instant-search {
+    position: relative;
+}
+.place-wrapper {
+    position: absolute;
+    top: 34px;
+    left: 0;
+    background: #FFF;
+    z-index: 100;
+    border: 1px solid #E7E7E7;
+    padding: 10px 15px;
+    min-width: 170px;
+}
 
 @media (min-width: 1200px) {
     .main-container {
@@ -243,6 +259,9 @@
     }
     .mr15 {
         margin-right: 15px;
+    }
+    .visa-wrap {
+        padding-top: 10px;
     }
     input.half-input {
         width: 487px;

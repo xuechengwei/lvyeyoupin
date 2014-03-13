@@ -1,5 +1,5 @@
-<!-- first form begin -->
-<form action="" name="firstForm" id="first-form" class="tab-pane active" ng-submit="saveState()" novalidate>
+<!--first form begin -->
+<form action="" name="firstForm" id="first-form" ng-submit="saveState()" novalidate>
     <div class="form-horizontal">
         <div class="form-group clearfix" ng-class="{'has-error':firstForm.subject.$invalid && !firstForm.subject.$pristine}">
             <div class="col-lg-2 col-md-2 clearfix row-head">
@@ -13,7 +13,7 @@
                 <span class="error-tips" ng-show="firstForm.subject.$error.required && !firstForm.subject.$pristine">请填写商品标题</span>
             </div>
             <div class="col-lg-offset-2 col-lg-10">
-                <input type="text" name="subject" class="form-control" required ng-maxlength="30" ng-model="act.subject">
+                <input type="text" name="subject" class="form-control" required ng-maxlength="30" ng-model="draft.subject">
             </div>
         </div>
         <div class="form-group clearfix"  ng-class="{'has-error':firstForm.features.$invalid && !firstForm.features.$pristine}">
@@ -26,7 +26,7 @@
                 <span class="error-tips" ng-show="firstForm.features.$error.required && !firstForm.features.$pristine">请填写推荐理由</span>
             </div>
             <div class="col-lg-offset-2 col-lg-10">
-                <textarea name="features" id="" class="form-control" rows="10" ng-maxlength="200" ng-model="act.features" required></textarea>
+                <textarea name="features" id="" class="form-control" rows="10" ng-maxlength="200" ng-model="draft.features" required></textarea>
             </div>
         </div>
         <div class="form-group clearfix">
@@ -37,7 +37,7 @@
                 <span class="field-tips">设置不同的指数级别，让您的活动更具特色</span>
             </div>
             <div class="col-lg-12">
-                <div class="row"  ng-controller="ratyCtrl">
+                <div class="row"  ng-controller="RatyCtrl">
                     <div class="col-lg-2 row-head">
                         <label>AA指数:</label>
                     </div>
@@ -46,7 +46,7 @@
                         <span class="badge" ng-class="{'badge-warning': percent<30, 'badge-info': percent>=30 && percent<70, 'badge-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}% <input type="hidden" name="aa_star" value="{{percent}}"></span>
                     </div>
                 </div>
-                <div class="row"  ng-controller="ratyCtrl1">
+                <div class="row"  ng-controller="RatyCtrl1">
                     <div class="col-lg-2 row-head">
                         <label>BB指数:</label>
                     </div>
@@ -55,7 +55,7 @@
                         <span class="badge" ng-class="{'badge-warning': percent<30, 'badge-info': percent>=30 && percent<70, 'badge-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%<input type="hidden" name="bb_star" value="{{percent}}"></span>
                     </div>
                 </div>
-                <div class="row"  ng-controller="ratyCtrl2">
+                <div class="row"  ng-controller="RatyCtrl2">
                     <div class="col-lg-2 row-head">
                         <label>CC指数:</label>
                     </div>
@@ -64,7 +64,7 @@
                         <span class="badge" ng-class="{'badge-warning': percent<30, 'badge-info': percent>=30 && percent<70, 'badge-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%<input type="hidden" name="cc_star" value="{{percent}}"></span>
                     </div>
                 </div>
-                <div class="row"  ng-controller="ratyCtrl3">
+                <div class="row"  ng-controller="RatyCtrl3">
                     <div class="col-lg-2 row-head">
                         <label>DD指数:</label>
                     </div>
@@ -79,20 +79,26 @@
             <div class="col-lg-2 col-md-2 clearfix row-head">
                 <label for="" class="must-fill">出发地:</label>
             </div>
-            <div class="col-lg-10">
-                <input name="depart_place" type="text" class="form-control short-input" ng-model="act.depart_place" required>
+            <div class="col-lg-10" ng-controller="TypeaheadCtrl" class="glyphicon glyphicon-refresh">
+                <input name="depart_place" type="text" class="form-control short-input" ng-model="draft.depart_place" required typeahead="address for address in getLocation($viewValue) | filter:$viewValue" typeahead-loading="loadingLocations" typeahead-editable="false" >
+                <i ng-show="loadingLocations" class="ml15 glyphicon glyphicon-refresh"></i>
+                <!-- <input name="depart_place" type="text" class="form-control short-input" ng-model="draft.depart_place" required> -->
                 <span class="field-tips ml15">支持拼音、英文、中文、缩写关联提醒</span>
                 <span class="error-tips ml15" ng-show="firstForm.depart_place.$error.required && !firstForm.depart_place.$pristine">请填写出发地</span>
+                <span class="error-tips ml15" ng-show="firstForm.depart_place.$error.editable && !firstForm.depart_place.$pristine">请从下拉框中选取地名</span>
             </div>
         </div>
-        <div class="form-group"  ng-class="{'has-error':firstForm.dest_place.$invalid && !firstForm.dest_place.$pristine}">
+        <div class="form-group" ng-class="{'has-error':firstForm.dest_place.$invalid && !firstForm.dest_place.$pristine}">
             <div class="col-lg-2 col-md-2 clearfix row-head">
                 <label for="" class="must-fill">目的地:</label>
             </div>
-            <div class="col-lg-10">
-                <input name="dest_place" type="text" class="form-control short-input" required ng-model="act.dest_place">
+            <div class="col-lg-10" ng-controller="TypeaheadCtrl" class="glyphicon glyphicon-refresh">
+                <input name="dest_place" type="text" class="form-control short-input" ng-model="draft.dest_place" required typeahead="address for address in getLocation($viewValue) | filter:$viewValue" typeahead-loading="loadingLocations" typeahead-editable="false" >
+                <i ng-show="loadingLocations" class="ml15 glyphicon glyphicon-refresh"></i>
+                <!-- <input name="dest_place" type="text" class="form-control short-input" required ng-model="draft.dest_place"> -->
                 <span class="field-tips ml15">支持拼音、英文、中文、缩写关联提醒</span>
                 <span class="error-tips ml15" ng-show="firstForm.dest_place.$error.required && !firstForm.dest_place.$pristine">请填写目的地</span>
+                <span class="error-tips ml15" ng-show="firstForm.dest_place.$error.editable && !firstForm.dest_place.$pristine">请从下拉框中选取地名</span>
             </div>
         </div>
         <div class="form-group">
@@ -101,22 +107,37 @@
             </div>
             <div class="col-lg-10 row">
                 <div class="col-lg-2">
-                    <div class="input-group">
-                        <input name="days" type="text" class="form-control">
+                    <div class="input-group" ng-class="{'has-error':firstForm.days.$invalid && !firstForm.days.$pristine}">
+                        <input name="days" type="number" min="0" class="form-control" ng-model="draft.days" required>
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">天</button>
                         </span>
                     </div>
                 </div>
                 <div class="col-lg-2">
-                    <div class="input-group">
-                        <input name="nights" type="text" class="form-control">
+                    <div class="input-group" ng-class="{'has-error':firstForm.nights.$invalid && !firstForm.nights.$pristine}">
+                        <input name="nights" type="number" min="0" class="form-control" ng-model="draft.nights" required>
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">晚</button>
                         </span>
                     </div>
                 </div>
-                <span class="field-tips ml15">例如:7天6晚</span>
+                <span class="field-tips ml15" ng-show="(firstForm.days.$valid && firstForm.nights.$valid) || (firstForm.nights.$pristine && firstForm.nights.$pristine)">例如:7天6晚</span>
+                <span class="error-tips ml15" ng-show="firstForm.days.$error.required && !firstForm.days.$pristine">
+                    请填写数字天数
+                </span>
+                <span class="error-tips ml15" ng-show="firstForm.nights.$error.required && !firstForm.nights.$pristine">
+                    请填写数字晚数
+                </span>
+                <!-- 
+                <span class="error-tips ml15" ng-show="firstForm.nights.$error.required && !firstForm.nights.$pristine && !(firstForm.days.$error.required && !firstForm.days.$pristine)">请填写晚数</span>
+                <span class="error-tips ml15" ng-show="(!firstForm.nights.$pristine && !firstForm.nights.$error.required && !firstForm.nights.$error.number) && (firstForm.days.pristine || (!firstForm.days.pristine && !firstForm.days.$error.required && firstForm.days.$error.number))">请填写数字晚数</span>
+                <span class="error-tips ml15" ng-show="firstForm.days.$error.required && !firstForm.days.$pristine && !(firstForm.nights.$error.required && !firstForm.nights.$pristine)">请填写天数</span>
+                <span class="error-tips ml15" ng-show="firstForm.days.$error.required && !firstForm.days.$pristine && (firstForm.nights.$error.required && !firstForm.nights.$pristine)">请填写天数和晚数</span>
+                <span class="error-tips ml15" ng-show="!firstForm.days.$error.required && !firstForm.days.$pristine && !firstForm.days.$error.number && (firstForm.nights.pristine || (!firstForm.nights.pristine && !firstForm.nights.$error.required && firstForm.nights.$error.number))">请填写数字天数</span>
+                <span class="error-tips ml15" ng-show="!firstForm.days.$error.required && !firstForm.days.$pristine && !firstForm.days.$error.number && (!firstForm.nights.pristine && !firstForm.nights.$error.required && !firstForm.nights.$error.number)">请填写数字</span>
+                 -->
+                <!-- <span class="error-tips ml15" ng-show="firstForm.nights.$error.number && !firstForm.nights.$pristine">请填写晚数</span> -->
             </div>
         </div>
         <div class="form-group">
@@ -125,26 +146,29 @@
             </div>
             <div class="col-lg-10 row">
                 <div class="col-lg-3">
-                    <div class="input-group">
+                    <div class="input-group" ng-class="{'has-error':firstForm.min_enrollment.$error.number && firstForm.min_enrollment.$error.positiveInteger}">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">最少</button>
                         </span>
-                        <input name="min_enrollment" type="text" class="form-control">
+                        <input name="min_enrollment" type="number" class="form-control" min="0" ng-model="draft.min_enrollment" positive-integer>
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">人</button>
                         </span>
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="input-group">
+                    <div class="input-group" ng-class="{'has-error':firstForm.max_enrollment.$error.positiveInteger && !firstForm.max_enrollment.$pristine}">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">最多</button>
                         </span>
-                        <input name="max_enrollment" type="text" class="form-control">
+                        <input name="max_enrollment" type="number" class="form-control" min="0" ng-model="draft.max_enrollment" positive-integer>
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">人</button>
                         </span>
                     </div>
+                </div>
+                <div class="col-lg-3">
+                    <span class="error-tips">请输入数字</span>
                 </div>
             </div>
         </div>
@@ -321,7 +345,7 @@
             <div class="col-lg-2 col-md-2 clearfix row-head">
                 <label for=""  class="must-fill">出行价格表:</label>
             </div>
-            <div class="col-lg-10">
+            <div class="col-lg-10" ng-controller="PriceRecordCtrl">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -332,20 +356,38 @@
                             <th>操作</th>
                         </tr>
                     </thead>
-                    <tbody ng-controller="priceRecordCtrl">
-                        <tr ng-repeat="price in prices" ng-class="{active: $index % 2 == 0}">
+                    <tbody>
+                        <tr ng-repeat="record in records" ng-class="{active: $even}">
                             <td>{{ $index + 1 }}</td>
-                            <td>{{ price.startDate }}</td>
-                            <td>{{ price.endDate }}</td>
-                            <td>{{ price.price }}</td>
                             <td>
-                                <a ng-show="" href="">修改</a>
-                                <a href="">删除</a>
-                                <a href="">保存</a>
+                                <div ng-hide="record.editMode">{{ record.startAt }}</div>
+                                <div ng-show="record.editMode" class="datepicker-wrap">
+                                    <input class="date-picker form-control" date-picker  type="text" ng-model="record.startAt" required>
+                                </div>
+                            </td>
+                            <td>
+                                <div ng-hide="record.editMode">{{ record.endAt }}</div>
+                                <div ng-show="record.editMode" class="datepicker-wrap">
+                                    <input class="date-picker form-control" date-picker type="text" ng-show="record.editMode" ng-model="record.endAt" required>
+                                </div>
+                            </td>
+                            <td>
+                                <div ng-hide="record.editMode">{{ record.price }}</div>
+                                <input class="form-control" type="number" min="0" ng-show="record.editMode" ng-model="record.price" required>
+                            </td>
+                            <td>
+                                <a ng-click="updateRecord()" href="" ng-hide="record.editMode">修改</a>
+                                <a ng-click="removeRecord($index)" href="" ng-hide="record.editMode">删除</a>
+                                <a ng-click="saveRecord()" href="" ng-show="record.editMode">保存</a>
+                                <a ng-click="cancelEdit()" href="" ng-show="record.editMode">取消</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <button class="btn btn-default pull-right" ng-click="addRecord()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    新增
+                </button>
             </div>
         </div>
         <!-- 出行价格表 end -->
@@ -363,6 +405,9 @@
         </div>
         <!-- 价格说明 end -->
     </div>
-    <button class="btn btn-default pull-right" type="submit">提交</button>
+    <div class="form-group text-center footer-btns">
+        <button type="button" class="btn btn-primary">下一步</button>
+        <button type="button" class="btn btn-default col-lg-offset-1">保存草稿</button>
+    </div>
 </form>
 <!-- first form end -->
